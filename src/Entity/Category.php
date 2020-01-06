@@ -3,9 +3,20 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @ApiResource(
+ * subresourceOperations={
+ *  "items_subresource_get" = {
+ *      "path" = "/category/{id}/items",
+ *  }
+ * }
+ *)
  */
 class Category
 {
@@ -28,6 +39,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="category")
+     * @ApiSubresource
      */
     private $items;
 
@@ -96,4 +108,3 @@ class Category
         return $this;
     }
 }
-
