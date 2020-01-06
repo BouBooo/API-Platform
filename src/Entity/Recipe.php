@@ -33,7 +33,15 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *          "controller" = "App\Controller\RecipeController",
  *          "swagger_context" = {
  *              "summary" = "Générer une recette",
- *              "description" = "Générer une recette selon certains ingrédients prédéfinis"    
+ *              "description" = "Générer une recette selon certains ingrédients prédéfinis",
+ *              "parameters"= {
+ *                  {
+ *                      "name" = "list",
+ *     				    "in" = "body",
+ *     			        "type" = "array",
+ *                      "required" = true
+ *                  },
+ *     			}   
  *          }
  *      }
  *  } 

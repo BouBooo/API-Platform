@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ApiResource(
+ *  collectionOperations = {},
  *  shortName="Authentication",
  *     itemOperations = {
  *    	"register" = {
@@ -40,7 +41,22 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     		"route_name" = "app_login",
  *     		"swagger_context" = {
  *     			"summary" = "Login",
- *     			"description" = "Login"
+ *     			"description" = "Login",
+ *              "parameters"= {
+ *                  {
+ *                      "name" = "email",
+ *     				    "in" = "body",
+ *     			        "type" = "string",
+ *                      "required" = true
+ *                  },
+ *                  {
+ *                      "name" = "password",
+ *     				    "in" = "body",
+ *     			        "type" = "string",
+ *                      "required" = true
+ *                  },
+ *     			}
+ *              
  *	 		}
  *     	}
  *	 }
