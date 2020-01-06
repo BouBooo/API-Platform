@@ -2,9 +2,34 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ *     shortName="Tokens",
+ *     collectionOperations={},
+ *     itemOperations={
+ *     		"refresh_token" = {
+ *     			"method" = "POST",
+ *     			"route_name" = "refresh_token",
+ *     			"swagger_context" = {
+ *     				"summary" = "Refresh a token",
+ *     				"description" = "Refresh a token",
+ *     			},
+ *              "parameters"= {
+ *                  {
+ *                      "name" = "refreshToken",
+ *     				    "in" = "body",
+ *     			        "type" = "string",
+ *                      "required" = true
+ *                  },
+ *     		}
+ * 		}
+ * 	}
+ * )
+ *
+ *
  * @ORM\Entity(repositoryClass="App\Repository\ApiTokenRepository")
  */
 class ApiToken

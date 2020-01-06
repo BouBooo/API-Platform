@@ -17,7 +17,12 @@ class ApiTokenController extends AbstractController
 	 * @Route(
 	 *     name="refresh_token",
 	 * 	   path="/api/auth/token/refresh",
-	 *
+	 *	   methods={"POST"},
+	 *     defaults={
+	 *     		"_controller"="\App\Controller\ApiTokenController::refresh",
+	 *     		"_api_ressource_class"="App\Entity\ApiToken",
+	 *     		"_api_item_operation_name"="refresh_token"
+	 * 	   }
 	 * )
 	 *
 	 *
