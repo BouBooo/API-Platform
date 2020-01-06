@@ -19,15 +19,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     		"swagger_context": {
  *     			"summary" = "Register",
  *     			"description" = "Register",
- * 				"parameters": {
- *     				"in" = "body",
- * 					"schema" = {
- *     					"type" = "object",
- *     					"properties": {
- *     						"email": { "type": "string" },
- *							"password": { "type": "string" }
- *     					}
- *     				}
+ * 				"parameters"= {
+ *                  {
+ *                      "name" = "email",
+ *     				    "in" = "body",
+ *     			        "type" = "string",
+ *                      "required" = true
+ *                  },
+ *                  {
+ *                      "name" = "password",
+ *     				    "in" = "body",
+ *     			        "type" = "string",
+ *                      "required" = true
+ *                  },
  *     			}
  *          }
  *	 	},
