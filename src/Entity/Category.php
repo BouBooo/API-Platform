@@ -10,13 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- * @ApiResource(
- * subresourceOperations={
- *  "items_subresource_get" = {
- *      "path" = "/category/{id}/items",
- *  }
- * }
- *)
+ * @ApiResource()
  */
 class Category
 {
@@ -39,7 +33,6 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="category")
-     * @ApiSubresource
      */
     private $items;
 

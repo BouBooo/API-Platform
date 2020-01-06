@@ -4,10 +4,32 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
- * @ApiResource()
+ * @ApiResource(
+ *  itemOperations={ 
+ *      "GET" = {
+ *          "swagger_context"= {
+ *          "summary"="Récupérer les items",
+ *          "descripion"="Yes la description"
+ *          }
+ *      },
+ *       "PUT" = {
+ *          "swagger_context"= {
+ *          "summary"="Modifier un item en particulier",
+ *          "descripion"="Yes la description"
+ *          }
+ *       },
+ *       "DELETE" = {
+ *          "swagger_context"= {
+ *          "summary"="Supprimer un item en particulier",
+ *          "descripion"="Yes la description"
+ *          }
+ *      }, 
+ *  } 
+ * )
  */
 class Item
 {
@@ -60,6 +82,7 @@ class Item
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="items")
+     * @ApiSubresource()
      */
     private $category;
 

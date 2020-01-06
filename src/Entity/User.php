@@ -10,7 +10,37 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ApiResource()
+ * @ApiResource(
+ *  shortName="Authentication",
+ *     itemOperations = {
+ *    	"register" = {
+ *     		"method" = "POST",
+ *     		"route_name" = "app_register",
+ *     		"swagger_context": {
+ *     			"summary" = "Register",
+ *     			"description" = "Register",
+ * 				"parameters": {
+ *     				"in" = "body",
+ * 					"schema" = {
+ *     					"type" = "object",
+ *     					"properties": {
+ *     						"email": { "type": "string" },
+ *							"password": { "type": "string" }
+ *     					}
+ *     				}
+ *     			}
+ *          }
+ *	 	},
+ *     	"login" = {
+ *     		"method" = "POST",
+ *     		"route_name" = "app_login",
+ *     		"swagger_context" = {
+ *     			"summary" = "Login",
+ *     			"description" = "Login"
+ *	 		}
+ *     	}
+ *	 }
+ * )
  */
 class User implements UserInterface
 {

@@ -7,7 +7,37 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecipeRepository")
- * @ApiResource()
+ * @ApiResource(
+ * itemOperations={ 
+ *      "GET" = {
+ *          "swagger_context"= {
+ *          "summary"="Récupérer les recipes",
+ *          "descripion"="Yes la description"
+ *          }
+ *      },
+ *       "PUT" = {
+ *          "swagger_context"= {
+ *          "summary"="Modifier une recipe en particulier",
+ *          "descripion"="Yes la description"
+ *          }
+ *       },
+ *       "DELETE" = {
+ *          "swagger_context"= {
+ *          "summary"="Supprimer une recipe en particulier",
+ *          "descripion"="Yes la description"
+ *          }
+ *      }, 
+ *      "generateRecipe" = {
+ *          "method" = "GET",
+ *          "path"  = "/recipes/generate",
+ *          "controller" = "App\Controller\RecipeController",
+ *          "swagger_context" = {
+ *              "summary" = "Générer une recette",
+ *              "description" = "Générer une recette selon certains ingrédients prédéfinis"    
+ *          }
+ *      }
+ *  } 
+ * )
  */
 class Recipe
 {
