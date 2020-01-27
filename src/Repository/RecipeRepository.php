@@ -19,17 +19,17 @@ class RecipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Recipe::class);
     }
 
-    public function findByQueryItems(array $items)
+    public function findByQueryItems(array $items, $meal)
     {
         return $this->createQueryBuilder('r')
             ->innerJoin('r.items', 'i')
+            ->innerJoin('r.meal', 'm')
             ->where('i.name IN (:items)')
-            ->setParameter('items', $items)
-            // ->andWhere('r.meal = :meal')
-            // ->setParameter([
-            //     'items' => $items,
-            //     'meal' => $meal
-            // ])
+            ->andWhere('m.id = :meal')
+            ->setParameters([
+                'items' => $items,
+                'meal' => $meal->getId()
+            ])
             ->orderBy('r.id', 'ASC')
             ->getQuery()
             ->getResult()

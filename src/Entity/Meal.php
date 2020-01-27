@@ -33,8 +33,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *          "path"  = "/meals/{id}/generate",
  *          "controller" = "App\Controller\GenerateRecipeController",
  *          "swagger_context" = {
- *              "summary" = "Test custom route",
- *              "description" = "blablabla",
+ *              "summary" = "Générer une recette selon le type de repas et les ingrédients souhaités",
+ *              "description" = "",
  *              "parameters"= {
  *                  {
  *                      "name" = "list",

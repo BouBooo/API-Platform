@@ -24,7 +24,7 @@ class GenerateRecipeController extends AbstractController
             $items[] = $recipe->getItems();
         }
 
-        $result = $recipeModel->findByQueryItems($queryItems);
+        $result = $recipeModel->findByQueryItems($queryItems, $data);
         
         return $result;
     }

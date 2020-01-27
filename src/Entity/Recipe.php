@@ -27,23 +27,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  *          "summary"="Supprimer une recipe en particulier",
  *          "descripion"="Yes la description"
  *          }
- *      }, 
- *      "testCustom" = {
- *          "method" = "GET",
- *          "path"  = "/recipes/{id}/test",
- *          "controller" = "App\Controller\RecipeController",
- *          "swagger_context" = {
- *              "summary" = "Test custom route",
- *              "description" = "blablabla",
- *              "parameters"= {
- *                  {
- *                      "name" = "list",
- *     				    "in" = "body",
- *     			        "type" = "array",
- *                      "required" = true
- *                  },
- *     			}   
- *          }
  *      }
  *  } 
  * )
