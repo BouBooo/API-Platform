@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecipeRepository")
@@ -27,13 +28,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *          "descripion"="Yes la description"
  *          }
  *      }, 
- *      "generateRecipe" = {
+ *      "testCustom" = {
  *          "method" = "GET",
- *          "path"  = "/recipes/generate",
+ *          "path"  = "/recipes/{id}/test",
  *          "controller" = "App\Controller\RecipeController",
  *          "swagger_context" = {
- *              "summary" = "Générer une recette",
- *              "description" = "Générer une recette selon certains ingrédients prédéfinis",
+ *              "summary" = "Test custom route",
+ *              "description" = "blablabla",
  *              "parameters"= {
  *                  {
  *                      "name" = "list",
@@ -72,14 +73,13 @@ class Recipe
     private $items;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Meal", inversedBy="recipes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Meal", inversedBy="recipes")
      */
-    private $meals;
+    private $meal;
 
     public function __construct()
     {
         $this->items = new ArrayCollection();
-        $this->meals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,7 +114,7 @@ class Recipe
     /**
      * @return Collection|Item[]
      */
-    public function getItems(): Collection
+    public function getItems()
     {
         return $this->items;
     }
@@ -139,28 +139,14 @@ class Recipe
         return $this;
     }
 
-    /**
-     * @return Collection|Meal[]
-     */
-    public function getMeals(): Collection
+    public function getMeal(): ?Meal
     {
-        return $this->meals;
+        return $this->meal;
     }
 
-    public function addMeal(Meal $meal): self
+    public function setMeal(?Meal $meal): self
     {
-        if (!$this->meals->contains($meal)) {
-            $this->meals[] = $meal;
-        }
-
-        return $this;
-    }
-
-    public function removeMeal(Meal $meal): self
-    {
-        if ($this->meals->contains($meal)) {
-            $this->meals->removeElement($meal);
-        }
+        $this->meal = $meal;
 
         return $this;
     }

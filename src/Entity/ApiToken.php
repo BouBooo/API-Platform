@@ -130,4 +130,9 @@ class ApiToken
 
         return $this;
     }
+
+    public function isValid($now)
+    {
+        return $now < $this->expirationDate;
+    }
 }

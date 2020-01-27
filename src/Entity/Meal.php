@@ -2,12 +2,50 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MealRepository")
- * @ApiResource()
+ * @ApiResource(itemOperations={ 
+ *      "GET" = {
+ *          "swagger_context"= {
+ *          "summary"="Récupérer les repas",
+ *          "descripion"="Yes la description"
+ *          }
+ *      },
+ *       "PUT" = {
+ *          "swagger_context"= {
+ *          "summary"="Modifier un repas en particulier",
+ *          "descripion"="Yes la description"
+ *          }
+ *       },
+ *       "DELETE" = {
+ *          "swagger_context"= {
+ *          "summary"="Supprimer un repas en particulier",
+ *          "descripion"="Yes la description"
+ *          }
+ *      }, 
+ *      "testCustom" = {
+ *          "method" = "GET",
+ *          "path"  = "/meals/{id}/generate",
+ *          "controller" = "App\Controller\GenerateRecipeController",
+ *          "swagger_context" = {
+ *              "summary" = "Test custom route",
+ *              "description" = "blablabla",
+ *              "parameters"= {
+ *                  {
+ *                      "name" = "list",
+ *     				    "in" = "body",
+ *     			        "type" = "array",
+ *                      "required" = true
+ *                  },
+ *     			}   
+ *          }
+ *      }
+ *  } )
  */
 class Meal
 {
@@ -24,7 +62,7 @@ class Meal
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Recipe", mappedBy="meals")
+     * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="meal")
      */
     private $recipes;
 
@@ -62,7 +100,7 @@ class Meal
     {
         if (!$this->recipes->contains($recipe)) {
             $this->recipes[] = $recipe;
-            $recipe->addMeal($this);
+            $recipe->setMeal($this);
         }
 
         return $this;
@@ -72,7 +110,10 @@ class Meal
     {
         if ($this->recipes->contains($recipe)) {
             $this->recipes->removeElement($recipe);
-            $recipe->removeMeal($this);
+            // set the owning side to null (unless already changed)
+            if ($recipe->getMeal() === $this) {
+                $recipe->setMeal(null);
+            }
         }
 
         return $this;

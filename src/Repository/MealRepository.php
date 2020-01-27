@@ -19,11 +19,7 @@ class MealRepository extends ServiceEntityRepository
         parent::__construct($registry, Meal::class);
     }
 
-    // /**
-    //  * @return Meal[] Returns an array of Meal objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByQueryItems(Entity $meal, aray $items)
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m.exampleField = :val')
@@ -34,7 +30,6 @@ class MealRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Meal

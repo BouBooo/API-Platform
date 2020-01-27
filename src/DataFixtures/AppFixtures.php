@@ -44,21 +44,19 @@ class AppFixtures extends Fixture
             $meal->setName($meals[$m]);
             array_push($mealsEntities, $meal);
             $manager->persist($meal);
+
+            for($r = 0; $r < 4; $r++) {
+                $recipe = new Recipe();
+                $recipe->setName('Recipe : ' . $r)
+                        ->setDescription('Description for recipe ' . $r)
+                        ->setMeal($meal);
+                    for($n = 0; $n < 4; $n++) {
+                        $recipe->addItem($items[array_rand($items, 1)]);
+                    }   
+                $manager->persist($recipe);
+            }
         }
 
-        for($r = 0; $r < 7; $r++) {
-            $recipe = new Recipe();
-            $recipe->setName('Recipe : ' . $r)
-                    ->setDescription('Description for recipe ' . $r);
-                for($n = 0; $n < 4; $n++) {
-                    $recipe->addItem($items[array_rand($items, 1)]);
-                }
-                for($t = 0; $t < 2; $t++) {
-                    $recipe->addMeal($mealsEntities[mt_rand(0,2)]);
-                }
-                    
-            $manager->persist($recipe);
-        }
         $manager->flush();
     }
 }
