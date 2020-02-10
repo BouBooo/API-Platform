@@ -44,6 +44,7 @@ class ApiTokenController extends AbstractController
 			return new JsonResponse(['message' => 'missing_fields']);
 		}
 
+		/** @var ApiToken $apiToken */
 		$apiToken = $manager->getRepository(ApiToken::class)->findOneBy([
 			'refreshToken' => $jsonData['refreshToken']
 		]);

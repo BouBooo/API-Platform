@@ -90,6 +90,6 @@ class SecurityController extends AbstractController
 
 		$apiTokenManager->create($user);
 
-		return new JsonResponse(['message' => 'account_created']);
+		return new JsonResponse(['message' => 'account_created'], Response::HTTP_OK);
 	}
 }

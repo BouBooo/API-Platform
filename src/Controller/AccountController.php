@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,12 +25,13 @@ class AccountController extends AbstractController
 	 * @return JsonResponse
 	 */
     public function currentUserInfos() {
-        if(!$this->getUser()) return new JsonResponse(['message' => 'No user']);
-        return new JsonResponse(['message' => 'user informations',
+        if (!$this->getUser()) return new JsonResponse(['message' => 'not_connected']);
+
+        return new JsonResponse(['message' => 'my_informations',
             'user' => [
                 'email' => $this->getUser()->getEmail(),
                 'role' => $this->getUser()->getRoles()
             ]
-        ]);
+        ], Response::HTTP_OK);
     }
 }
