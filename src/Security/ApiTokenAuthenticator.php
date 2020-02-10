@@ -22,19 +22,19 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
 
 	/** @var EntityManagerInterface  */
 	private $manager;
-	/** @var LoginAuthenticator */
-	private $loginAuthenticator;
+	/** @var Security  */
+	private $security;
 
 	/**
 	 * ApiTokenAuthenticator constructor.
 	 *
 	 * @param EntityManagerInterface $manager
-	 * @param LoginAuthenticator $loginAuthenticator
+	 * @param Security $security
 	 */
-	public function __construct(EntityManagerInterface $manager, LoginAuthenticator $loginAuthenticator)
+	public function __construct(EntityManagerInterface $manager, Security $security)
 	{
 		$this->manager = $manager;
-		$this->loginAuthenticator = $loginAuthenticator;
+		$this->security = $security;
 	}
 
 	public function supports(Request $request)
@@ -53,20 +53,6 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
     {
         if (!$credentials['accessToken']) {
      		return null;
-		}
-
-		/** @var User $user */
-		$user = $this->loginAuthenticator->getCurrentUser();
-
-		if (null === $user) {
-			return null;
-		}
-
-		/** @var ApiToken $apiToken */
-		$apiToken = $user->getApiTokens()->last();
-
-		if ($credentials['accessToken'] !== $apiToken->getAccessToken()) {
-			return null;
 		}
 
 		/** @var ApiToken $apiToken */

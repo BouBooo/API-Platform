@@ -127,7 +127,8 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         	return false;
 		}
 
-        $this->currentUser = $user;
+		$this->currentUser = $user;
+		
         return true;
     }
 
