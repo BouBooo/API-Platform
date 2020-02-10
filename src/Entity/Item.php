@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
@@ -29,7 +30,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  *          "descripion"="Yes la description"
  *          }
  *      }, 
- *  } 
+ *  },
+ * normalizationContext={
+ *      "groups" = {"item_normalization"}
+ *  },
  * )
  */
 class Item
@@ -43,36 +47,43 @@ class Item
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"recipe_normalization", "item_normalization", "category_normalization"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"item_normalization"})
      */
     private $infos;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"item_normalization"})
      */
     private $protein;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"item_normalization"})
      */
     private $glucid;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"item_normalization"})
      */
     private $vitamin;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"item_normalization"})
      */
     private $calories;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"item_normalization"})
      */
     private $sugar;
 
@@ -84,11 +95,13 @@ class Item
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="items")
      * @ApiSubresource()
+     * @Groups({"item_normalization"})
      */
     private $category;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Recipe", inversedBy="items")
+     * @Groups({"item_normalization"})
      */
     private $recipes;
 
@@ -213,7 +226,7 @@ class Item
     /**
      * @return Collection|Recipe[]
      */
-    public function getRecipes(): Collection
+    public function getRecipes()
     {
         return $this->recipes;
     }

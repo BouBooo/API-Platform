@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecipeRepository")
@@ -28,7 +29,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  *          "descripion"="Yes la description"
  *          }
  *      }
- *  } 
+ *  },
+ * normalizationContext={
+ *      "groups" = {"recipe_normalization"}
+ *  },
  * )
  */
 class Recipe
@@ -42,26 +46,30 @@ class Recipe
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"recipe_normalization", "item_normalization", "meal_normalization"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"recipe_normalization"})
      */
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Item", mappedBy="recipes")
+     * @Groups({"recipe_normalization"})
      */
     private $items;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Meal", inversedBy="recipes")
+     * @Groups({"recipe_normalization"})
      */
     private $meal;
 
     public function __construct()
-    {
+    {   
         $this->items = new ArrayCollection();
     }
 

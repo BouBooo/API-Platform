@@ -2,14 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MealRepository")
- * @ApiResource(itemOperations={ 
+ * @ApiResource(
+ *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {
  *          "summary"="Récupérer les repas",
@@ -45,7 +47,11 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     			}   
  *          }
  *      }
- *  } )
+ *  },
+ * normalizationContext={
+ *      "groups" = {"meal_normalization"}
+ *  }, 
+ * )
  */
 class Meal
 {
@@ -58,11 +64,13 @@ class Meal
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"meal_normalization", "recipe_normalization"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="meal")
+     * @Groups({"meal_normalization"})
      */
     private $recipes;
 

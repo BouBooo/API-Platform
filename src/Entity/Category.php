@@ -7,10 +7,15 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- * @ApiResource()
+ * @ApiResource(
+ * normalizationContext={
+ *      "groups" = {"category_normalization"}
+ *  },
+ * )
  */
 class Category
 {
@@ -23,16 +28,19 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"category_normalization", "item_normalization"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"category_normalization"})
      */
     private $description;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="category")
+     * @Groups({"category_normalization"})
      */
     private $items;
 
