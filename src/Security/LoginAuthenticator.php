@@ -48,7 +48,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
 	 * @var ContainerInterface
 	 */
     private $container;
-    private $currentUser = null;
+    private $currentUser;
 
 	/**
 	 * LoginAuthenticator constructor.
@@ -75,6 +75,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         $this->passwordEncoder = $passwordEncoder;
         $this->security = $security;
         $this->container = $container;
+        $this->currentUser = null;
     }
 
     public function supports(Request $request)
