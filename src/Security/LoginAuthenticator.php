@@ -48,7 +48,6 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
 	 * @var ContainerInterface
 	 */
     private $container;
-    private $currentUser;
 
 	/**
 	 * LoginAuthenticator constructor.
@@ -75,7 +74,6 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
         $this->passwordEncoder = $passwordEncoder;
         $this->security = $security;
         $this->container = $container;
-        $this->currentUser = null;
     }
 
     public function supports(Request $request)
@@ -123,12 +121,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        if (!$this->passwordEncoder->isPasswordValid($user, $credentials['password'])) {
-        	return false;
-		}
-
-        $this->currentUser = $user;
-        return true;
+        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
@@ -164,11 +157,4 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
 		return $credentials['password'];
 	}
 
-	/**
-	 * @return User|null
-	 */
-	public function getCurrentUser()
-	{
-		return $this->currentUser;
-	}
 }
