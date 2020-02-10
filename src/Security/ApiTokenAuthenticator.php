@@ -44,20 +44,6 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
 
     public function getCredentials(Request $request)
     {
-    	/** @var User $user */
-    	$user = $this->security->getUser();
-
-    	if (null === $user) {
-    		return null;
-		}
-
-    	/** @var ApiToken $apiToken */
-    	$apiToken = $user->getApiTokens()->last();
-
-    	if ($request->headers->get(self::AUTH_TOKEN) !== $apiToken->getAccessToken()) {
-    		return null;
-		}
-
         return [
         	'accessToken' => $request->headers->get(self::AUTH_TOKEN)
 		];
@@ -69,7 +55,21 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
      		return null;
 		}
 
-        /** @var ApiToken $apiToken */
+		/** @var User $user */
+		$user = $this->security->getUser();
+
+		if (null === $user) {
+			return null;
+		}
+
+		/** @var ApiToken $apiToken */
+		$apiToken = $user->getApiTokens()->last();
+
+		if ($credentials['accessToken'] !== $apiToken->getAccessToken()) {
+			return null;
+		}
+
+		/** @var ApiToken $apiToken */
         $apiToken = $this->manager->getRepository(ApiToken::class)->findOneBy([
 			'accessToken' => $credentials['accessToken']
 		]);
