@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  * @ApiResource(
+ * shortName="Category - X-AUTH-TOKEN requis",
  * normalizationContext={
  *      "groups" = {"category_normalization"}
  *  },

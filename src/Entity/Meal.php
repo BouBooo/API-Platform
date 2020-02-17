@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MealRepository")
  * @ApiResource(
+ *  shortName="Meal - X-AUTH-TOKEN requis",
  *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {

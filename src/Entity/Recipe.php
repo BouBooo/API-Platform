@@ -10,6 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecipeRepository")
  * @ApiResource(
+ * shortName="Recipe - X-AUTH-TOKEN requis",
  * itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {

@@ -11,22 +11,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  * @ApiResource(
+ *  shortName="Item - X-AUTH-TOKEN requis",
  *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {
- *          "summary"="X-AUTH-TOKEN requis - Récupérer les items",
+ *          "summary"="Récupérer les items",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
  *      },
  *       "PUT" = {
  *          "swagger_context"= {
- *          "summary"="X-AUTH-TOKEN requis - Modifier un item en particulier",
+ *          "summary"="Modifier un item en particulier",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
  *       },
  *       "DELETE" = {
  *          "swagger_context"= {
- *          "summary"="X-AUTH-TOKEN requis - Supprimer un item en particulier",
+ *          "summary"="Supprimer un item en particulier",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
  *      }, 
