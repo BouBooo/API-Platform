@@ -20,19 +20,35 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     		"swagger_context": {
  *     			"summary" = "Register",
  *     			"description" = "Register",
- * 				"parameters"= {
+ * 				"parameters" = {
  *                  {
- *                      "name" = "email",
+ *                      "name" = "body",
  *     				    "in" = "body",
- *     			        "type" = "string",
- *                      "required" = true
+ *                      "required" = true,
+ *     					"schema" = {
+ *     						"type" = "object",
+ *     						"required" = {
+ *     							"email",
+ *     							"password"
+ *     						},
+ *     						"properties" = {
+ *     							"email" = {
+ *     								"type" = "string"
+ *     							},
+ *     							"password" = {
+ *     								"type" = "string"
+ *     							}
+ *     						}
+ *     					}
+ *					}
  *                  },
- *                  {
- *                      "name" = "password",
- *     				    "in" = "body",
- *     			        "type" = "string",
- *                      "required" = true
- *                  },
+ *     				"responses" = {
+ *     					200 = {
+ *     						"description" = "message: account_created"
+ *     					},
+ *     					400 = {
+ *     						"description" = "message: missing_fields"
+ *     					}
  *     			}
  *          }
  *	 	},
@@ -64,6 +80,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     					}
  *
  *                  },
+ *     			},
+ *     			"responses" = {
+ *     				200 = {
+ *     					"description" = "accessToken: 49b8e963ce8bba60e1edfc03c1f70260fc9bd23a,
+										refreshToken: 01a2238d6949b65471f02e02b7445770a9e4217c,
+										expirationDate: 18/03/2020 21:16:19"
+ *     				},
+ *     				400 = {
+ *     					"description" = "message = invalid_credentials"
+ *     				}
  *     			}
  *              
  *	 		}

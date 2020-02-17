@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiTokenController extends AbstractController
@@ -18,7 +19,7 @@ class ApiTokenController extends AbstractController
 	 *     name="refresh_token",
 	 * 	   path="/api/auth/token/refresh",
 	 *	   methods={"POST"},
-	 *     defaults={
+	 *     defaults= {
 	 *     		"_controller"="\App\Controller\ApiTokenController::refresh",
 	 *     		"_api_ressource_class"="App\Entity\ApiToken",
 	 *     		"_api_item_operation_name"="refresh_token"
@@ -41,7 +42,7 @@ class ApiTokenController extends AbstractController
 		}
 
 		if (!array_key_exists('refreshToken', $jsonData)) {
-			return new JsonResponse(['message' => 'missing_fields']);
+			return new JsonResponse(['message' => 'missing_fields'], Response::HTTP_BAD_REQUEST);
 		}
 
 		/** @var ApiToken $apiToken */
@@ -59,6 +60,7 @@ class ApiTokenController extends AbstractController
 			'user' => $newApiToken->getUser()->getEmail(),
 			'accessToken' => $newApiToken->getAccessToken(),
 			'refreshToken' => $newApiToken->getRefreshToken(),
+			'expirationDate' => $newApiToken->getExpirationDate()->format('d/m/Y H:i:s')
 		]);
 
 	}

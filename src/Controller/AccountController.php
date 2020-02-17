@@ -24,8 +24,11 @@ class AccountController extends AbstractController
 	 *
 	 * @return JsonResponse
 	 */
-    public function currentUserInfos() {
-        if (!$this->getUser()) return new JsonResponse(['message' => 'not_connected']);
+    public function currentUserInfos()
+	{
+        if (null === $this->getUser()) {
+        	return new JsonResponse(['message' => 'not_connected'], Response::HTTP_BAD_REQUEST);
+		}
 
         return new JsonResponse(['message' => 'my_informations',
             'user' => [

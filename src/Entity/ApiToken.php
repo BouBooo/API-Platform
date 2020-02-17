@@ -13,17 +13,40 @@ use Doctrine\ORM\Mapping as ORM;
  *     		"refresh_token" = {
  *     			"method" = "POST",
  *     			"route_name" = "refresh_token",
- *     			"swagger_context" = {
+ *     			"swagger_context": {
  *     				"summary" = "Refresh a token",
  *     				"description" = "Refresh a token",
- *     			},
- *              "parameters"= {
- *                  {
- *                      "name" = "refreshToken",
- *     				    "in" = "body",
- *     			        "type" = "string",
- *                      "required" = true
+ *              	"parameters" = {
+ *                  	{
+ *                      	"name" = "body",
+ *     				    	"in" = "body",
+ *                      	"required" = true,
+ *     						"schema" = {
+ *     							"type" = "object",
+ *     							"required" = {
+ *     								"refreshToken"
+ *     							},
+ *     							"properties" = {
+ *     								"refreshToken" = {
+ *										"type" = "string"
+ * 									}
+ *     							}
+ *     					}
  *                  },
+ *     			},
+ *     			"responses" = {
+ *     				200 = {
+ *     					"description" = "message: access_token_refreshed,
+ * 										 user: test@test.com,
+ *	 									 accessToken: 413hzjabd9ndaiadnokdmzdjzhu,
+ *	 									 refreshToken: __JDAoiaoap38dpj2pjod9danipre,
+ *	 									 expirationDate: 23/04/2020 12:34:03"
+ *     				},
+ *     				400 = {
+ *     					"description" = "message: refresh_token_not_found"
+ *     				}
+ *     			}
+ *
  *     		}
  * 		}
  * 	}
@@ -34,6 +57,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ApiToken
 {
+
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
