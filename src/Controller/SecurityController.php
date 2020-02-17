@@ -74,7 +74,7 @@ class SecurityController extends AbstractController
 		}
 
 		if (empty($jsonData['email']) || empty($jsonData['password'])) {
-			return new JsonResponse(['message' => 'invalid_credentials'], Response::HTTP_BAD_REQUEST);
+			return new JsonResponse(['message' => 'missing_fields'], Response::HTTP_BAD_REQUEST);
 		}
 
 		if (!filter_var($jsonData['email'], FILTER_VALIDATE_EMAIL)) {

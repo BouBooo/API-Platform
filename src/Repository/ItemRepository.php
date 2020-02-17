@@ -19,31 +19,4 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
-    public function findByQuery($meal, $recipe)
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.meal = :meal')
-            ->andWhere('i.recipe = :recipe')
-            ->setParameter([
-                'meal' => $meal,
-                'recipe' => $recipe
-            ])
-            ->orderBy('i.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
-
-    /*
-    public function findOneBySomeField($value): ?Item
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
