@@ -11,23 +11,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MealRepository")
  * @ApiResource(
- *  shortName="Meal - X-AUTH-TOKEN requis",
  *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {
- *          "summary"="Récupérer les repas",
+ *          "summary"="Récupérer les repas - X-AUTH-TOKEN requis",
  *          "descripion"="Yes la description"
  *          }
  *      },
  *       "PUT" = {
  *          "swagger_context"= {
- *          "summary"="Modifier un repas en particulier",
+ *          "summary"="Modifier un repas en particulier - X-AUTH-TOKEN requis",
  *          "descripion"="Yes la description"
  *          }
  *       },
  *       "DELETE" = {
  *          "swagger_context"= {
- *          "summary"="Supprimer un repas en particulier",
+ *          "summary"="Supprimer un repas en particulier - X-AUTH-TOKEN requis",
  *          "descripion"="Yes la description"
  *          }
  *      }, 
@@ -36,7 +35,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "path"  = "/meals/{id}/generate",
  *          "controller" = "App\Controller\GenerateRecipeController",
  *          "swagger_context" = {
- *              "summary" = "Générer une recette selon le type de repas et les ingrédients souhaités",
+ *              "summary" = "X-AUTH-TOKEN requis - Générer une recette selon le type de repas et les ingrédients souhaités",
  *              "description" = "",
  *              "parameters"= {
  *                  {
