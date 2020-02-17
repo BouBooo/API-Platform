@@ -1,6 +1,14 @@
 api_platform:
-    title: 'API title'
-    enable_re_doc: true
+    title: 'Api ception'
+    description: 'The API description'
+    version: '1.0.0'
+    doctrine:
+        enabled: true
+    formats:
+        json:
+            mime_types: ['application/json']
+        html:
+            mime_types: ['text/html']
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     swagger:
