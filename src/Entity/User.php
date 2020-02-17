@@ -44,16 +44,25 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     			"description" = "Login",
  *              "parameters"= {
  *                  {
- *                      "name" = "email",
+ *                      "name" = "body",
  *     				    "in" = "body",
- *     			        "type" = "string",
- *                      "required" = true
- *                  },
- *                  {
- *                      "name" = "password",
- *     				    "in" = "body",
- *     			        "type" = "string",
- *                      "required" = true
+ *                      "required" = true,
+ *     					"schema" = {
+ *     						"type" = "object",
+ *     						"required" = {
+ *     							"email",
+ *     							"password"
+ *     						},
+ *     						"properties" = {
+ *     							"email" = {
+ *     								"type" = "string"
+ *     							},
+ *     							"password" = {
+ *     								"type" = "string"
+ *     							}
+ *     						}
+ *     					}
+ *
  *                  },
  *     			}
  *              
