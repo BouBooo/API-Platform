@@ -80,6 +80,10 @@ class SecurityController extends AbstractController
 			return new JsonResponse(['message' => 'json_malformatted'], Response::HTTP_BAD_REQUEST);
 		}
 
+		if (!array_key_exists('email', $jsonData) || !array_key_exists('password', $jsonData)) {
+			return new JsonResponse(['message' => 'missing_fields'], Response::HTTP_BAD_REQUEST);
+		}
+
 		if (empty($jsonData['email']) || empty($jsonData['password'])) {
 			return new JsonResponse(['message' => 'missing_fields'], Response::HTTP_BAD_REQUEST);
 		}
