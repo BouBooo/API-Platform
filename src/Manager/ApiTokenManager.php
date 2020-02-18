@@ -81,7 +81,7 @@ class ApiTokenManager extends AbstractController
 		$tokens['accessToken'] = $accessToken;
 
 		do {
-			$refreshToken = sha1(random_bytes(10));
+			$refreshToken = '__' . sha1(random_bytes(10));
 		} while ($this->refreshTokenAlreadyExists($refreshToken));
 
 		$tokens['refreshToken'] = $refreshToken;
