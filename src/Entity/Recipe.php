@@ -41,6 +41,7 @@ class Recipe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"recipe_normalization"})
      */
     private $id;
 
