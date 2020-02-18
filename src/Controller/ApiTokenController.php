@@ -51,7 +51,7 @@ class ApiTokenController extends AbstractController
 		]);
 
 		if (is_null($apiToken)) {
-			return new JsonResponse(['message' => 'refresh_token_not_found']);
+			return new JsonResponse(['message' => 'refresh_token_not_found'], Response::HTTP_NOT_FOUND);
 		}
 
 		$newApiToken = $apiTokenManager->refreshToken($apiToken);
@@ -61,7 +61,7 @@ class ApiTokenController extends AbstractController
 			'accessToken' => $newApiToken->getAccessToken(),
 			'refreshToken' => $newApiToken->getRefreshToken(),
 			'expirationDate' => $newApiToken->getExpirationDate()->format('d/m/Y H:i:s')
-		]);
+		], Response::HTTP_OK);
 
 	}
 }

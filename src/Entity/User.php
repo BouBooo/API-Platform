@@ -88,6 +88,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 										expirationDate: 18/03/2020 21:16:19"
  *     				},
  *     				400 = {
+ *     					"description": "message: missing_fields"
+ *     				},
+ *     				404 = {
  *     					"description" = "message = invalid_credentials"
  *     				}
  *     			}
