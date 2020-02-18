@@ -14,7 +14,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {
- *          "tags"={"Category | X-AUTH-TOKEN is required"},
  *          "summary"="Récupérer les items - X-AUTH-TOKEN requis",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
@@ -59,13 +58,13 @@ class Item
     private $infos;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Groups({"item_normalization"})
      */
     private $protein;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Groups({"item_normalization"})
      */
     private $glucid;
@@ -77,13 +76,13 @@ class Item
     private $vitamin;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Groups({"item_normalization"})
      */
     private $calories;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Groups({"item_normalization"})
      */
     private $sugar;

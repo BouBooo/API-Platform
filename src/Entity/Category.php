@@ -39,7 +39,7 @@ class Category
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="category", orphanRemoval=true)
      * @Groups({"category_normalization"})
      */
     private $items;

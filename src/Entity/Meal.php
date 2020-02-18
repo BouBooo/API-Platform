@@ -69,7 +69,7 @@ class Meal
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="meal")
+     * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="meal", orphanRemoval=true)
      * @Groups({"meal_normalization"})
      */
     private $recipes;
