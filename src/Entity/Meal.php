@@ -35,7 +35,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "path"  = "/meals/{id}/generate",
  *          "controller" = "App\Controller\GenerateRecipeController",
  *          "swagger_context" = {
- *              "summary" = "X-AUTH-TOKEN requis - Générer une recette selon le type de repas et les ingrédients souhaités",
+ *              "summary" = "Générer une recette selon le type de repas et les ingrédients souhaités",
  *              "description" = "",
  *              "parameters"= {
  *                  {
