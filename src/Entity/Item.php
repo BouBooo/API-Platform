@@ -47,7 +47,7 @@ class Item
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"recipe_normalization", "item_normalization", "category_normalization"})
+     * @Groups({"recipe_normalization", "item_normalization", "category_normalization", "meal_normalization"})
      */
     private $name;
 
@@ -77,7 +77,7 @@ class Item
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"item_normalization"})
+     * @Groups({"item_normalization", "meal_normalization"})
      */
     private $calories;
 

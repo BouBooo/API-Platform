@@ -46,6 +46,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                  },
  *     			}   
  *          }
+ *      },
+ *     "maxCalories" = {
+ *          "method" = "GET",
+ *          "path"  = "/meals/{id}/calories",
+ *          "controller" = "App\Controller\CaloriesController",
+ *          "swagger_context" = {
+ *              "summary" = "Génère les recettes respectant la charge calorique indiquée.",
+ *              "description" = ""  
+ *          }
  *      }
  *  },
  * normalizationContext={

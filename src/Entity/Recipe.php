@@ -58,7 +58,7 @@ class Recipe
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Item", mappedBy="recipes")
-     * @Groups({"recipe_normalization"})
+     * @Groups({"recipe_normalization", "meal_normalization"})
      */
     private $items;
 

@@ -40,7 +40,7 @@ class DatabaseFixtures extends Fixture
                     ->setProtein(mt_rand(4, 26))
                     ->setGlucid(mt_rand(12, 50))
                     ->setVitamin(mt_rand(4, 8))
-                    ->setCalories(mt_rand(120, 600))
+                    ->setCalories(mt_rand(50, 200))
                     ->setSugar(mt_rand(5, 20))
                     ->setCreatedAt(new \DateTime())
                     ->setCategory($category);
