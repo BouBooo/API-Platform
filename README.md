@@ -8,6 +8,11 @@
 git clone https://github.com/BouBooo/API-Platform.git
 ```
 
+### Se rendre dans le projet
+```bash
+cd API-Platform
+```
+
 #### Installation des packages
 ```bash
 composer install
