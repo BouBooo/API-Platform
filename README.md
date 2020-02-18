@@ -28,4 +28,9 @@ php bin/console doctrine:schema:update
 php bin/console doctrine:fixtures:load
 ```
 
+#### Lancement du serveur
+```bash
+php bin/console serveur:run
+```
+
 
