@@ -8,7 +8,7 @@
 git clone https://github.com/BouBooo/API-Platform.git
 ```
 
-### Se rendre dans le projet
+#### Se rendre dans le projet
 ```bash
 cd API-Platform
 ```
