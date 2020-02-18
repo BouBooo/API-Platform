@@ -14,7 +14,6 @@ class CaloriesController extends AbstractController
 {
     public function __invoke(Meal $data, Request $request, RecipeRepository $recipeModel)
     {
-        $test = [];
         $recipesToSend = [];
         $itemsCal = [];
 
@@ -30,7 +29,6 @@ class CaloriesController extends AbstractController
             }
             $recipeCal = array_sum($itemsCal);
             $itemsCal = [];
-            array_push($test, $recipeCal);
             if($recipeCal <= $calories) {
                 array_push($recipesToSend, $recipe);
             }
