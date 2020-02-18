@@ -20,7 +20,7 @@ composer install
 
 #### Création de la base de données
 ```bash
-php bin/console doctrine:schema:create 
+php bin/console doctrine:database:create 
 ```
 
 #### Création de la structure de la base
