@@ -5,7 +5,7 @@
 
 #### Récupération du projet
 ```bash
-git clone https://github.com/BouBooo/API-Platform.zip
+git clone https://github.com/BouBooo/API-Platform.git
 ```
 
 #### Installation des packages
