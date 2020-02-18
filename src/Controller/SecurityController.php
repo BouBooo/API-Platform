@@ -14,6 +14,13 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
+	private $entityManager;
+
+	public function __construct(EntityManagerInterface $entityManager)
+	{
+		$this->entityManager = $entityManager;
+	}
+
 	/**
 	 * @Route(
 	 *     name="app_login",
@@ -79,6 +86,14 @@ class SecurityController extends AbstractController
 
 		if (!filter_var($jsonData['email'], FILTER_VALIDATE_EMAIL)) {
 			return new JsonResponse(['message' => 'invalid_email_format'], Response::HTTP_BAD_REQUEST);
+		}
+
+		$userAlreadyExist = $this->entityManager->getRepository(User::class)->findOneBy([
+			'email' => $jsonData['email']
+		]);
+
+		if ($userAlreadyExist) {
+			return new JsonResponse(['message' => 'user_already_exist'], Response::HTTP_FOUND);
 		}
 
 		$user = new User();
