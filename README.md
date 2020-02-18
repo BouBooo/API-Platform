@@ -5,7 +5,12 @@
 
 #### Récupération du projet
 ```bash
-git clone https://github.com/BouBooo/API-Platform.zip
+git clone https://github.com/BouBooo/API-Platform.git
+```
+
+#### Se rendre dans le projet
+```bash
+cd API-Platform
 ```
 
 #### Installation des packages
@@ -15,7 +20,7 @@ composer install
 
 #### Création de la base de données
 ```bash
-php bin/console doctrine:schema:create 
+php bin/console doctrine:database:create 
 ```
 
 #### Création de la structure de la base
