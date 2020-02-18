@@ -20,17 +20,17 @@ php bin/console doctrine:schema:create
 
 #### Création de la structure de la base
 ```bash
-php bin/console doctrine:schema:update 
+php bin/console doctrine:schema:update -f
 ```
 
 #### Chargement des données
 ```bash
-php bin/console doctrine:fixtures:load
+php bin/console doctrine:fixtures:load -n
 ```
 
 #### Lancement du serveur
 ```bash
-php bin/console serveur:run
+php bin/console server:run
 ```
 
 
