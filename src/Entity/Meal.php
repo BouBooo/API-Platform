@@ -14,19 +14,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {
- *          "summary"="Récupérer les repas - X-AUTH-TOKEN requis",
+ *          "summary"="Récupérer les repas",
  *          "descripion"="Yes la description"
  *          }
  *      },
  *       "PUT" = {
  *          "swagger_context"= {
- *          "summary"="Modifier un repas en particulier - X-AUTH-TOKEN requis",
+ *          "summary"="Modifier un repas en particulier",
  *          "descripion"="Yes la description"
  *          }
  *       },
  *       "DELETE" = {
  *          "swagger_context"= {
- *          "summary"="Supprimer un repas en particulier - X-AUTH-TOKEN requis",
+ *          "summary"="Supprimer un repas en particulier",
  *          "descripion"="Yes la description"
  *          }
  *      }, 

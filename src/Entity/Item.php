@@ -14,19 +14,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *  itemOperations={ 
  *      "GET" = {
  *          "swagger_context"= {
- *          "summary"="Récupérer les items - X-AUTH-TOKEN requis",
+ *          "summary"="Récupérer les items",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
  *      },
  *       "PUT" = {
  *          "swagger_context"= {
- *          "summary"="Modifier un item en particulier - X-AUTH-TOKEN requis",
+ *          "summary"="Modifier un item en particulier",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
  *       },
  *       "DELETE" = {
  *          "swagger_context"= {
- *          "summary"="Supprimer un item en particulier - X-AUTH-TOKEN requis",
+ *          "summary"="Supprimer un item en particulier",
  *          "descripion"="X-AUTH-TOKEN requis"
  *          }
  *      }, 
