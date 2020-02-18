@@ -46,6 +46,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *     					200 = {
  *     						"description" = "message: account_created"
  *     					},
+ *     					302 = {
+ *     						"description" = "message: email_already_used"
+ *     					},
  *     					400 = {
  *     						"description" = "message: missing_fields"
  *     					}

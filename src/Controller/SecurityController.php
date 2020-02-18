@@ -93,7 +93,7 @@ class SecurityController extends AbstractController
 		]);
 
 		if ($userAlreadyExist) {
-			return new JsonResponse(['message' => 'user_already_exist'], Response::HTTP_FOUND);
+			return new JsonResponse(['message' => 'email_already_used'], Response::HTTP_FOUND);
 		}
 
 		$user = new User();
